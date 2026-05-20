@@ -1,0 +1,66 @@
+.fontset2 h2 {
+font-weight: 400;
+font-size: 1.8rem;
+line-height: 1.53;
+}
+
+/* Center the site title and subtitle. */
+#header > div.header-container.container > div.site-branding > div > div {
+	justify-content: center;
+	text-align: center;
+}
+
+@media (min-width: 62rem) {
+  .site-branding .site-info {
+    max-width: 80vw;
+  }
+}
+
+.site-slogan {
+  font-style: italic;
+}
+
+/* Add a border to the bottom of the site title. */
+#header > div.header-container.container > div.site-branding > div > div > div > div.site-name {
+	border-bottom: 3px solid #e77500;
+}
+
+/* Customize the main navigation menu at desktop width. */
+
+#header > div.header-container.container > nav > div {
+  padding: 0;
+}
+
+#menu-container {
+	justify-content: center;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+@media (min-width: 62rem){
+	#menu-container {
+		justify-content: center !important;
+		background: #737373;
+	}
+	#menu-container > ul > li.nav-item > a {
+		color: white;
+	}
+}
+
+/* Set the degree to which the site title is bold. */
+.fontset2 .site-name {
+	font-weight: 500;
+}
+
+/* Change the site title font size. */
+.site-branding .site-name {
+	font-size: 2rem;
+}
+
+#block-ps-tiger-content > article > div.node__content > div.constrained-bkg-constrained-content.layout.layout--twocol-50-50 {
+  min-height: 400px;
+}
+
+.figure.media--type-image.ratio--freeform.size--medium.alignment--center {
+  text-align: center;
+}
