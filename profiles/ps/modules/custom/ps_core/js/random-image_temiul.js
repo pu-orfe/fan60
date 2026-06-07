@@ -21,38 +21,12 @@
             let $image = $('img', this);
             if ($image.length) {
               const dataSrc = $($image).attr('data-src');
-              if (dataSrc) {
-                let safeSrc = '';
-                try {
-                  let parsed = new URL(dataSrc, window.location.href);
-                  if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-                    safeSrc = parsed.href;
-                  }
-                } catch (e) {
-                  if (!dataSrc.includes(':')) {
-                    safeSrc = dataSrc;
-                  }
-                }
-                if (safeSrc) {
-                  $($image).attr('src', safeSrc);
-                }
+              if (dataSrc && /^[a-zA-Z0-9\s.\/?&=_-]+$/.test(dataSrc)) {
+                $($image).attr('src', dataSrc);
               }
               const dataSrcSet = $($image).attr('data-srcset');
-              if (dataSrcSet) {
-                let safeSrcSet = '';
-                try {
-                  let parsed = new URL(dataSrcSet, window.location.href);
-                  if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-                    safeSrcSet = parsed.href;
-                  }
-                } catch (e) {
-                  if (!dataSrcSet.includes(':')) {
-                    safeSrcSet = dataSrcSet;
-                  }
-                }
-                if (safeSrcSet) {
-                  $($image).attr('srcset', safeSrcSet);
-                }
+              if (dataSrcSet && /^[a-zA-Z0-9\s,.\/?&=_-]+$/.test(dataSrcSet)) {
+                $($image).attr('srcset', dataSrcSet);
               }
             }
           }
