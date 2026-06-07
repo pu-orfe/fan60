@@ -21,12 +21,12 @@
             let $image = $('img', this);
             if ($image.length) {
               const dataSrc = $($image).attr('data-src');
-              if (dataSrc) {
-                $($image).attr('src', dataSrc)
+              if (dataSrc && !/^javascript:/i.test(dataSrc.trim())) {
+                $($image).attr('src', dataSrc);
               }
               const dataSrcSet = $($image).attr('data-srcset');
-              if (dataSrcSet) {
-                $($image).attr('srcset', dataSrcSet)
+              if (dataSrcSet && !/^javascript:/i.test(dataSrcSet.trim())) {
+                $($image).attr('srcset', dataSrcSet);
               }
             }
           }
