@@ -21,12 +21,38 @@
             let $image = $('img', this);
             if ($image.length) {
               const dataSrc = $($image).attr('data-src');
-              if (dataSrc && !/^javascript:/i.test(dataSrc.trim())) {
-                $($image).attr('src', dataSrc);
+              if (dataSrc) {
+                let safeSrc = '';
+                try {
+                  let parsed = new URL(dataSrc, window.location.href);
+                  if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+                    safeSrc = parsed.href;
+                  }
+                } catch (e) {
+                  if (!dataSrc.includes(':')) {
+                    safeSrc = dataSrc;
+                  }
+                }
+                if (safeSrc) {
+                  $($image).attr('src', safeSrc);
+                }
               }
               const dataSrcSet = $($image).attr('data-srcset');
-              if (dataSrcSet && !/^javascript:/i.test(dataSrcSet.trim())) {
-                $($image).attr('srcset', dataSrcSet);
+              if (dataSrcSet) {
+                let safeSrcSet = '';
+                try {
+                  let parsed = new URL(dataSrcSet, window.location.href);
+                  if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+                    safeSrcSet = parsed.href;
+                  }
+                } catch (e) {
+                  if (!dataSrcSet.includes(':')) {
+                    safeSrcSet = dataSrcSet;
+                  }
+                }
+                if (safeSrcSet) {
+                  $($image).attr('srcset', safeSrcSet);
+                }
               }
             }
           }
